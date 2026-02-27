@@ -1,0 +1,85 @@
+# Q1 Reverse the given array
+arr=list(map(int,input().split()))
+i=0
+j=len(arr)-1
+while i<j:
+    arr[i],arr[j]=arr[j],arr[i]
+    i+=1
+    j-=1
+print(arr)
+
+# Q2 Find minimum and maximum element in array
+arr=list(map(int,input().split()))
+print(min(arr),max(arr))
+
+# Q3 Find kth smallest element in array
+arr=list(map(int,input().split()))
+k=int(input())
+arr.sort()
+print(arr[k-1])
+
+# Q4 Find Union of two arrays
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+print(list(set(a+b)))
+
+# Q5 Find largest element in array
+arr=list(map(int,input().split()))
+print(max(arr))
+
+# Q6 Rotate array by one position clockwise
+arr=list(map(int,input().split()))
+print([arr[-1]]+arr[:-1])
+
+# Q7 Maximum sum of subarray
+arr=list(map(int,input().split()))
+m=arr[0]
+c=arr[0]
+for i in arr[1:]:
+    c=max(i,c+i)
+    m=max(m,c)
+print(m)
+
+# Q8 Search Insert Position
+arr=list(map(int,input().split()))
+t=int(input())
+l=0
+h=len(arr)-1
+while l<=h:
+    mid=(l+h)//2
+    if arr[mid]==t:
+        print(mid)
+        break
+    elif arr[mid]<t:
+        l=mid+1
+    else:
+        h=mid-1
+else:
+    print(l)
+
+# Q9 Two Sum
+arr=list(map(int,input().split()))
+t=int(input())
+d={}
+for i in range(len(arr)):
+    if t-arr[i] in d:
+        print([d[t-arr[i]],i])
+        break
+    d[arr[i]]=i
+
+# Q10 Minimum number of jumps to reach end
+arr=list(map(int,input().split()))
+n=len(arr)
+c=0
+e=0
+m=0
+for i in range(n-1):
+    m=max(m,i+arr[i])
+    if i==e:
+        c+=1
+        e=m
+        if e>=n-1:
+            print(c)
+            break
+else:
+    print(-1)
